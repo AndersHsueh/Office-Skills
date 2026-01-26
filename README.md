@@ -19,6 +19,23 @@ Systematically test OpenCode models and optimize oh-my-opencode configuration fo
 - 阿里云 Qwen3-Max: 4秒响应时间
 - GitHub Copilot Claude Sonnet 4.5: 14秒响应时间(免费)
 
+### publish-my-skills (发布我的skills)
+
+自动发布本地开发的 Claude Code 技能到 GitHub 仓库 Skills-Vo-Anders。支持批量发布、智能检测更新、跳过相同内容。
+
+Automatically publish locally developed Claude Code skills to GitHub repository Skills-Vo-Anders. Supports batch publishing, smart update detection, and skipping identical content.
+
+**使用方法 Usage**: 
+- "发布我的 skills" (发布最近修改的技能)
+- "发布技能 [技能名称]" (发布指定技能)
+- "publish my skills [skill-name]"
+
+**核心功能 Core Features**:
+- ✅ 自动检测本地技能
+- ✅ 智能判断新建/更新/相同
+- ✅ 完整的 Git 自动化
+- ✅ 辅助脚本支持批量操作
+
 ## 目录结构 Structure
 
 ```
