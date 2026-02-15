@@ -14,9 +14,15 @@
 python update_gh_host.py
 ```
 
-### 2. 通过Qwen Code使用技能
+### 2. 通过Qwen Code使用技能（推荐）
 
-当您遇到GitHub访问慢或图片加载问题时，可以直接调用此技能，它会自动执行以下操作：
+**重要提示：由于修改hosts文件需要系统级权限，在Linux/macOS系统上需要使用sudo权限运行**
+
+```bash
+sudo qwen -y -p "使用技能更新HOST文件让github可用"
+```
+
+当您遇到GitHub访问慢或图片加载问题时，可以直接使用上述命令，它会自动执行以下操作：
 - 获取最新的GitHub域名IP映射数据
 - 备份当前hosts文件
 - 更新GitHub相关条目
@@ -30,7 +36,9 @@ python update_gh_host.py
 
 ## 注意事项
 
-1. **权限要求**：修改hosts文件需要管理员权限，Windows系统请以管理员身份运行，Linux/macOS系统可能需要sudo权限
+1. **权限要求**：修改hosts文件需要管理员权限
+   - Windows系统：请以管理员身份运行终端或IDE
+   - Linux/macOS系统：需要使用sudo权限运行技能
 2. **自动备份**：脚本会在修改前自动备份原hosts文件
 3. **安全机制**：如果更新过程中出现错误，脚本会自动恢复备份文件
 4. **DNS刷新**：更新完成后会自动刷新DNS缓存，确保更改立即生效
@@ -38,7 +46,7 @@ python update_gh_host.py
 ## 故障排除
 
 如果遇到问题，请检查：
-- 是否有足够的权限修改hosts文件
+- 是否有足够的权限修改hosts文件（在Linux/macOS上是否使用了sudo）
 - 网络连接是否正常（用于获取最新hosts内容）
 - hosts文件是否被其他程序占用
 
