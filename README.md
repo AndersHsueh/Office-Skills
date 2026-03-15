@@ -1,76 +1,60 @@
-# Skills-Vo-Anders
+# Office-Skills
 
-个人技能库,用于 OpenCode/Claude Code 的可复用技能文档。
+> 办公效率技能集 — 专为 Claude Code / OpenCode 打造的可复用技能库。
+> 收录那些真正在日常办公中能省力的技能：排版、环境配置、工作流自动化。
 
-Personal collection of skills for OpenCode/Claude Code.
+---
 
-## 可用技能 Available Skills
+## 技能列表
 
-### optimize-omo-config (优化omo配置)
+### answer2paper · 报纸排版
 
-系统化测试 OpenCode 模型,优化 oh-my-opencode 配置以提升速度。
+把 AI 的长篇回复或本地 Markdown 文件，自动排版成报纸样式的 HTML 页面，在浏览器整屏阅读。
 
-Systematically test OpenCode models and optimize oh-my-opencode configuration for speed.
+多栏布局 + 引言块 + 关键要点框，告别线性滚动。本地端口 1982 实时预览，输出纯静态 HTML 可直接分发存档。
 
-**使用方法 Usage**: 询问 Claude "优化我的 omo 配置" 或 "测试 opencode 模型"
+**触发**：`answer2paper` / `排版成报纸` / `@文件路径 , answer2paper`
 
-**关键发现 Key Findings**:
-- X.AI Grok-4: 4秒响应时间(最快)
-- 阿里云 Qwen3-Max: 4秒响应时间
-- GitHub Copilot Claude Sonnet 4.5: 14秒响应时间(免费)
+---
 
-### publish-my-skills (发布我的skills)
+### optimize-omo-config · 优化 omo 配置
 
-自动发布本地开发的 Claude Code 技能到 GitHub 仓库 Skills-Vo-Anders。支持批量发布、智能检测更新、跳过相同内容。
+系统化测试各家 AI 模型响应速度，自动优化 oh-my-opencode 配置文件，找出最快、最划算的模型组合。
 
-Automatically publish locally developed Claude Code skills to GitHub repository Skills-Vo-Anders. Supports batch publishing, smart update detection, and skipping identical content.
+**触发**：`优化我的 omo 配置` / `测试 opencode 模型`
 
-**使用方法 Usage**: 
-- "发布我的 skills" (发布最近修改的技能)
-- "发布技能 [技能名称]" (发布指定技能)
-- "publish my skills [skill-name]"
+---
 
-**核心功能 Core Features**:
-- ✅ 自动检测本地技能
-- ✅ 智能判断新建/更新/相同
-- ✅ 完整的 Git 自动化
-- ✅ 辅助脚本支持批量操作
+### publish-my-skills · 发布技能
 
-## 目录结构 Structure
+自动将本地开发的 Claude Code 技能发布到 GitHub，智能判断新建或更新，跳过相同内容，支持批量操作。
+
+**触发**：`发布我的 skills` / `发布技能 [技能名称]`
+
+---
+
+### update-gh-host · 更新 GitHub Hosts
+
+自动从远端拉取最新的 GitHub IP 映射并写入本地 hosts 文件，解决国内 GitHub 访问慢、图片无法加载的问题。支持主源与 Gitee 镜像双源切换。
+
+**触发**：`更新 GitHub hosts` / 直接运行 `update_gh_host.py`
+
+---
+
+## 安装方式
+
+进入对应技能目录，将 `SKILL.md` 的内容加载进 Claude Code 的 Project Instructions，或直接将技能文件夹路径添加到插件配置中。
+
+## 目录结构
 
 ```
 skills/
 └── skill-name/
-    ├── SKILL.md          # 主技能文档 Main skill documentation
-    ├── references/       # 参考资料(可选) Additional reference materials (optional)
-    ├── examples/         # 示例(可选) Working examples (optional)
-    └── scripts/          # 工具脚本(可选) Utility scripts (optional)
+    ├── SKILL.md          # 技能主逻辑
+    ├── README.md         # 使用说明
+    └── references/       # 模板/参考资料（可选）
 ```
-
-## 如何使用技能 How to Use Skills
-
-1. 在 Claude Code 中加载技能目录
-2. 使用触发短语激活技能
-3. 按照技能文档中的步骤操作
-
-1. Load the skills directory in Claude Code
-2. Use trigger phrases to activate skills
-3. Follow the steps in the skill documentation
-
-## 环境要求 Environment
-
-- **OpenCode**: 需要安装 oh-my-opencode 插件
-- **网络**: 部分模型在中国大陆可能需要 VPN
-- **API Keys**: 需要配置相应的模型提供商 API 密钥
-
-- **OpenCode**: Requires oh-my-opencode plugin
-- **Network**: Some models may require VPN in China mainland
-- **API Keys**: Provider API keys must be configured
-
-## 许可 License
-
-MIT
 
 ---
 
-*Created by Anders Hsueh | 创建于 2026-01-26*
+*MIT License · by Anders Hsueh*
