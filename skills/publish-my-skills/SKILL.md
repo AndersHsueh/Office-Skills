@@ -1,11 +1,11 @@
 ---
 name: publish-my-skills
-description: 发布自己开发的 Claude Code 技能到 GitHub 仓库 Skills-Vo-Anders。用户可以指定一个或多个技能名称,如果不指定则发布最近创建的技能。自动检测是新建还是更新。
+description: 发布自己开发的 Claude Code 技能到 GitHub 仓库 Office-Skills。用户可以指定一个或多个技能名称,如果不指定则发布最近创建的技能。自动检测是新建还是更新。
 ---
 
 # 发布我的 Skills
 
-这个技能帮助你将本地开发的 Claude Code 技能发布到 GitHub 仓库 `Skills-Vo-Anders`。
+这个技能帮助你将本地开发的 Claude Code 技能发布到 GitHub 仓库 `Office-Skills`。
 
 ## 触发短语
 
@@ -75,16 +75,16 @@ description: 发布自己开发的 Claude Code 技能到 GitHub 仓库 Skills-Vo
 
 ```bash
 # 1. 检查仓库是否存在
-cd ~/workspace/Skills-Vo-Anders 2>/dev/null
+cd ~/workspace/Office-Skills 2>/dev/null
 
 # 如果不存在,克隆仓库
 if [ $? -ne 0 ]; then
   cd ~/workspace
-  git clone https://github.com/AndersHsueh/Skills-Vo-Anders.git
+  git clone https://github.com/AndersHsueh/Office-Skills.git
 fi
 
 # 2. 更新到最新
-cd ~/workspace/Skills-Vo-Anders
+cd ~/workspace/Office-Skills
 git pull origin main
 
 # 3. 创建技能目录
@@ -97,7 +97,7 @@ mkdir -p skills/
 
 ```bash
 SKILL_NAME="optimize-omo-config"
-REPO_SKILL_PATH="~/workspace/Skills-Vo-Anders/skills/$SKILL_NAME"
+REPO_SKILL_PATH="~/workspace/Office-Skills/skills/$SKILL_NAME"
 
 if [ -d "$REPO_SKILL_PATH" ]; then
   echo "✓ 技能 $SKILL_NAME 已存在,准备更新"
@@ -129,7 +129,7 @@ fi
 ```bash
 SKILL_NAME="optimize-omo-config"
 LOCAL_PATH="~/.claude/skills/$SKILL_NAME"
-REPO_PATH="~/workspace/Skills-Vo-Anders/skills/$SKILL_NAME"
+REPO_PATH="~/workspace/Office-Skills/skills/$SKILL_NAME"
 
 # 创建目标目录
 mkdir -p "$REPO_PATH"
@@ -148,7 +148,7 @@ ls -lh "$REPO_PATH"
 
 ```bash
 SKILL_NAME="optimize-omo-config"
-README="~/workspace/Skills-Vo-Anders/README.md"
+README="~/workspace/Office-Skills/README.md"
 
 # 检查技能是否已在 README 中
 if ! grep -q "$SKILL_NAME" "$README"; then
@@ -165,7 +165,7 @@ fi
 ### 阶段 7: Git 提交和推送
 
 ```bash
-cd ~/workspace/Skills-Vo-Anders
+cd ~/workspace/Office-Skills
 
 # 添加所有变更
 git add skills/
@@ -206,7 +206,7 @@ git push origin main
   - README.md (详细说明)
   - examples/ (2个示例文件)
 
-**GitHub**: https://github.com/AndersHsueh/Skills-Vo-Anders/tree/main/skills/optimize-omo-config
+**GitHub**: https://github.com/AndersHsueh/Office-Skills/tree/main/skills/optimize-omo-config
 ```
 
 如果内容相同:
@@ -218,7 +218,7 @@ git push origin main
 **路径**: skills/optimize-omo-config/
 **无需操作**
 
-**GitHub**: https://github.com/AndersHsueh/Skills-Vo-Anders/tree/main/skills/optimize-omo-config
+**GitHub**: https://github.com/AndersHsueh/Office-Skills/tree/main/skills/optimize-omo-config
 ```
 
 ## 错误处理
@@ -264,7 +264,7 @@ git push origin main
 建议操作:
   1. 检查网络: ping github.com
   2. 检查认证: gh auth status
-  3. 手动推送: cd ~/workspace/Skills-Vo-Anders && git push
+  3. 手动推送: cd ~/workspace/Office-Skills && git push
 ```
 
 ## 高级用法
@@ -303,7 +303,7 @@ git push origin main
 
 ### GitHub 仓库配置
 
-默认仓库: `https://github.com/AndersHsueh/Skills-Vo-Anders`
+默认仓库: `https://github.com/AndersHsueh/Office-Skills`
 
 如果需要更改:
 1. 在技能目录创建 `.publish-config`
@@ -468,7 +468,7 @@ copy_skill() {
 助手: 
 ✓ 找到技能: optimize-omo-config
 ✓ 验证技能结构: 通过
-✓ 克隆仓库: Skills-Vo-Anders
+✓ 克隆仓库: Office-Skills
 ✓ 检测变更: 更新 (检测到 SKILL.md 有变化)
 ✓ 复制文件: 
   - SKILL.md (主文档)
@@ -479,7 +479,7 @@ copy_skill() {
 
 ✅ 技能发布成功!
 
-GitHub: https://github.com/AndersHsueh/Skills-Vo-Anders/tree/main/skills/optimize-omo-config
+GitHub: https://github.com/AndersHsueh/Office-Skills/tree/main/skills/optimize-omo-config
 ```
 
 ### 示例 2: 发布最近技能
@@ -523,7 +523,7 @@ GitHub: https://github.com/AndersHsueh/Skills-Vo-Anders/tree/main/skills/optimiz
 
 仓库中的版本与本地版本完全相同。
 
-GitHub: https://github.com/AndersHsueh/Skills-Vo-Anders/tree/main/skills/optimize-omo-config
+GitHub: https://github.com/AndersHsueh/Office-Skills/tree/main/skills/optimize-omo-config
 ```
 
 ## 总结
