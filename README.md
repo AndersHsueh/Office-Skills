@@ -7,6 +7,14 @@
 
 ## 技能列表
 
+### api-fox-bug-finder · Apifox 安全排查
+
+检测系统中是否存在 Apifox 恶意域名 `apifox.it.com` 的痕迹，支持 macOS / Linux / Windows 三平台，自动检查 Network Persistent State、Apifox 安装目录、hosts 文件和 Git 凭证，发现感染后输出中文处置建议。
+
+**触发**：`排查 Apifox` / `检查 apifox.it.com` / `apifox 中毒`
+
+---
+
 ### answer2paper · 报纸排版
 
 把 AI 的长篇回复或本地 Markdown 文件，自动排版成报纸样式的 HTML 页面，在浏览器整屏阅读。
