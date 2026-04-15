@@ -1,133 +1,85 @@
-# answer2paper
+# Office-Skills
 
-> 把 AI 的回复或 Markdown 文件，自动排版成报纸样式的 HTML 页面，在浏览器里整屏阅读。
-
----
-
-## 为什么需要它
-
-AI 的回复是从上到下线性"流"出来的。遇到知识密集、内容较长的回答，你不得不反复上下滚动屏幕，在脑内费力地拼凑结构。
-
-报纸是人类数百年来验证过的大量文字排版形式——多栏分流视线、标题层级引导扫读、引言块提炼精华。**answer2paper 把这套排版逻辑应用于 AI 输出**，让每次长回复都变成一张可以整屏浏览的"日报"。
-
-生成效果如下：
-
-- 米黄纸张底色，黑色衬线字体，深红点缀色
-- 报头（报名 + 日期 + 期号）+ SVG 装饰横线
-- 2～3 栏正文，大标题跨栏
-- 自动提取关键句作为引言块（pull quote）
-- 重要列表项归入"关键要点"框（fact box）
+> 办公效率技能集 — 专为 Claude Code / OpenCode 打造的可复用技能库。
+> 收录那些真正在日常办公中能省力的技能：排版、环境配置、工作流自动化。
 
 ---
 
-## 安装
+## 技能列表
 
-将 `answer2paper.skill` 文件安装到你的 Claude 环境（claude.ai Projects 或 Claude Code）。
+### answer2paper · 报纸排版
 
-安装后，在任意对话中直接使用即可，无需其他配置。
+把 AI 的长篇回复或本地 Markdown 文件，自动排版成报纸样式的 HTML 页面，在浏览器整屏阅读。
 
----
+多栏布局 + 引言块 + 关键要点框，告别线性滚动。本地端口 1982 实时预览，输出纯静态 HTML 可直接分发存档。
 
-## 使用方式
-
-### 模式 A — 排版 AI 上一条回复
-
-向 AI 提问，等待完整回复后，直接输入：
-
-```
-answer2paper
-```
-
-也可以说：`排版成报纸` / `生成报纸` / `转成报纸格式`
-
-### 模式 B — 排版指定 Markdown 文件
-
-如果你有一份本地的 `.md` 文件想排版，输入：
-
-```
-@notes.md , answer2paper
-```
-
-路径写法示例：
-
-| 输入 | 实际读取路径 |
-|------|-------------|
-| `@notes.md` | 当前工作目录下的 `notes.md` |
-| `@./docs/report.md` | 相对路径 |
-| `@/Users/me/report.md` | 绝对路径 |
-
-> 若文件不存在，会立即报错并停止，不会生成空报纸。
+**触发**：`answer2paper` / `排版成报纸` / `@文件路径 , answer2paper`
 
 ---
 
-## 输出
+### jb-simple-report · 金碧工作简报
 
-每次触发后，Claude 会：
+根据金碧工时及进展详情表.xlsx，生成每日工作简报 Markdown 文件。支持自动识别日期列、归类板块、提取风险卡点、标注未提交人员。
 
-1. 在当前工作目录下创建 `./paper/index.html`
-2. 若该文件已存在，自动备份为 `./paper/index-YYYYMMDD-HHMMSS.html`
-3. 启动本地 HTTP 服务（端口 **1982**）
-
-打开浏览器访问：
-
-```
-http://localhost:1982
-```
+**触发**：`生成日报` / `生成工作简报` / `创建日报` / `金碧项目日报`
 
 ---
+
+### jb-everyone-report · 金碧工时表读取
+
+从企业微信在线文档自动读取金碧项目全员工时表，输出 TSV 文件。依赖 macOS Chrome 已登录的企业微信文档 Session。
+
+**触发**：`读取工时表` / `获取金碧工时` / `拉取每日工时` / `jb-everyone-report`
+
+---
+
+### api-fox-bug-finder · Apifox 安全排查
+
+检测系统中是否存在 Apifox 恶意域名 `apifox.it.com` 的痕迹，支持 macOS / Linux / Windows 三平台，自动检查 Network Persistent State、Apifox 安装目录、hosts 文件和 Git 凭证，发现感染后输出中文处置建议。
+
+**触发**：`排查 Apifox` / `检查 apifox.it.com` / `apifox 中毒`
+
+---
+
+### optimize-omo-config · 优化 omo 配置
+
+系统化测试各家 AI 模型响应速度，自动优化 oh-my-opencode 配置文件，找出最快、最划算的模型组合。
+
+**触发**：`优化我的 omo 配置` / `测试 opencode 模型`
+
+---
+
+### publish-my-skills · 发布技能
+
+自动将本地开发的 Claude Code 技能发布到 GitHub，智能判断新建或更新，跳过相同内容，支持批量操作。
+
+**触发**：`发布我的 skills` / `发布技能 [技能名称]`
+
+---
+
+### update-gh-host · 更新 GitHub Hosts
+
+自动从远端拉取最新的 GitHub IP 映射并写入本地 hosts 文件，解决国内 GitHub 访问慢、图片无法加载的问题。支持主源与 Gitee 镜像双源切换。
+
+**触发**：`更新 GitHub hosts` / 直接运行 `update_gh_host.py`
+
+---
+
+## 安装方式
+
+进入对应技能目录，将 `SKILL.md` 的内容加载进 Claude Code 的 Project Instructions，或直接将技能文件夹路径添加到插件配置中。
 
 ## 目录结构
 
 ```
-./paper/
-├── index.html                  ← 最新一份报纸
-├── index-20260315-143022.html  ← 自动备份（按时间戳）
-├── index-20260314-091500.html
-└── ...
+Office-Skills/skills/
+└── skill-name/
+    ├── SKILL.md          # 技能主逻辑
+    ├── README.md         # 使用说明
+    ├── scripts/          # 脚本（可选）
+    └── references/       # 模板/参考资料（可选）
 ```
 
 ---
 
-## 设计规范
-
-颜色极简，仅三种：
-
-| 用途 | 色值 |
-|------|------|
-| 纸张底色 | `#F5F0E8` |
-| 正文墨色 | `#1A1A1A` |
-| 点缀（报头/引言/标签） | `#8B0000` 深红 |
-
-字体优先使用 Noto Serif SC（需联网加载），离线环境自动降级为 Georgia。生成的 HTML 无任何外部 JS 依赖，纯静态文件，可直接分发或存档。
-
----
-
-## 文件结构
-
-```
-answer2paper/
-├── SKILL.md                ← 技能主逻辑
-├── README.md               ← 本文件
-└── references/
-    └── layout.md           ← HTML/CSS 完整模板与排版规范
-```
-
----
-
-## 常见问题
-
-**Q：端口 1982 被占用怎么办？**
-如果服务已在运行（之前触发过），Claude 会检测到并直接告知当前地址，不会重复启动。若确实被其他程序占用，可手动运行 `cd ./paper && python3 -m http.server 8080` 换一个端口。
-
-**Q：历史报纸会一直保留吗？**
-是的，`./paper/` 目录中的备份文件不会被自动删除，可以手动清理。
-
-**Q：离线环境下字体会变吗？**
-会自动降级为 Georgia（衬线体），排版结构不受影响，只是字形略有不同。
-
-**Q：内容很短时也能用吗？**
-可以，短内容会自动选择 2 栏而非 3 栏排版。
-
----
-
-*由 answer2paper skill 生成 · Claude answer2paper*
+*MIT License · by Anders Hsueh*
